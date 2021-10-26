@@ -126,7 +126,24 @@ helm upgrade nginx01 --set image.registry=foobar bitnami/nginx --wait --timeout 
 # --wait will ensure that helm verifies pods are in running state
 # --timeout 10s
 ```
-
 # section 4 helm chart creation 101
 ```bash
+# 11) Chart.yaml file
+# create dir to hold helm chart
+helm create myapp
+helm install myapp01 myapp # this creates a chart different from bitnami
+# the service is of type clusterip
+# therefore we can port forward
+kubectl port-forward <pod name> 8080:80
+
+
+# 12) helm templates primer
+# all in the screenshots
+
+# 13) packaging our application in a helm chart
+# helm used for packageing k8s apps
+docker run -d -p 8080:80 afakharany/hellonodejs:1.0.0
+curl localhost:8080
+
+
 ```
